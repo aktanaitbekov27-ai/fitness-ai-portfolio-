@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Айтбеков Актан | Fitness AI Portfolio</title>
+    
+    <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/6.9.0/gradio.js"></script>
+    
+    <style>
+        :root {
+            --accent-color: #ccff00; /* Неоновый лайм */
+            --bg-dark: #0a0a0a;
+            --card-bg: #161616;
+            --text-gray: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent-color);
+            text-align: center;
+        }
+
+        header h1 { font-size: 3rem; margin: 0; color: var(--accent-color); text-transform: uppercase; }
+        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; color: var(--accent-color); text-transform: uppercase; }
+
+        .ai-container {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 10px;
+            border: 1px solid #333;
+            margin-bottom: 70px;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.1);
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.3s ease;
+        }
+
+        .video-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            background: #000;
+        }
+
+        .video-info { padding: 15px; }
+        .video-info h3 { margin: 0 0 8px 0; color: var(--accent-color); font-size: 1.1rem; }
+        .video-info p { margin: 0; font-size: 0.9rem; color: var(--text-gray); }
+
+        footer { text-align: center; padding: 50px; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid #222; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Айтбеков Актан</h1>
+        <p>Ученик 26 школы | Ученик AI Academy</p>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <h2>🏆 Итоговый проект AI-trainer - ИИ-тренер</h2>
+            <div class="ai-container">
+                <gradio-app src="https://aktan27-ai-portfolio.hf.space"></gradio-app>
+            </div>
+        </section>
+
+        <section>
+            <h2>📺 Мои видео-проекты по Computer Vision</h2>
+            <div class="video-grid">
+                
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/1CVFWRGLo52l8T8-2fY57fDOxOPrn_5io/preview"></iframe>
+                    <div class="video-info">
+                        <h3>🔍 Проект 1: Детекция градиентов</h3>
+                        <p>Программа выделяет вертикальные и горизонтальные границы объектов, анализируя изменения яркости.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/1J0UQ2vASsYeCMPloioML1WCyHuhV1h9c/preview"></iframe>
+                    <div class="video-info">
+                        <h3>🎭 Проект 2: Алгоритм Кэнни</h3>
+                        <p>Находит четкие контуры предметов, эффективно удаляя лишний фоновый шум.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/1HUVn6kyKUcYum6d1e9vAzlSEchWLnzOs/preview"></iframe>
+                    <div class="video-info">
+                        <h3>🌗 Проект 3: Методы бинаризации</h3>
+                        <p>Превращает цветные фото в черно-белые для точной сегментации объектов.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/199rN3ThoyRg5P73cS_qHMeGBR62SdtET/preview"></iframe>
+                    <div class="video-info">
+                        <h3>✨ Проект 4: Морфологическая очистка</h3>
+                        <p>Удаляет мелкие цифровые помехи и делает контуры объектов более чистыми.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/1OnchIQJZwMrVj8KfzMSS4KbpKV2WRsDf/preview"></iframe>
+                    <div class="video-info">
+                        <h3>🕳 Проект 5: Заполнение пустот</h3>
+                        <p>Устраняет разрывы в контурах и закрывает мелкие дыры внутри объектов.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <iframe src="https://drive.google.com/file/d/1Cgq1RCr72zFmyK4lexCvjO9cDncIho1c/preview"></iframe>
+                    <div class="video-info">
+                        <h3>🔢 Проект 6: Подсчет объектов</h3>
+                        <p>Алгоритм находит контуры фигур, выделяет их и автоматически считает количество.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Айтбеков Актан. Школа №26. Проект выполнен в рамках изучения технологий ИИ.
+    </footer>
+
+</body>
+</html>
