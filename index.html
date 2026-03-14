@@ -9,7 +9,7 @@
     
     <style>
         :root {
-            --accent-color: #008cff; /* Тот самый синий */
+            --accent-color: #008cff; /* Электрический синий */
             --bg-dark: #000000;
             --card-bg: #0d0d0d;
             --text-gray: #aaaaaa;
@@ -29,8 +29,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* УБРАЛИ ЗАТЕМНЕНИЕ: фото теперь очень чёткое */
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)), 
+            /* Фото БЕЗ сильного затемнения (0.2), чтобы было ОЧЕНЬ ЧЕТКО */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), 
                         url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80');
             background-size: cover;
             background-position: center;
@@ -41,7 +41,6 @@
         header h1 { 
             font-size: 3.5rem; 
             margin: 0; 
-            color: #ffffff; 
             text-transform: uppercase; 
             letter-spacing: 2px;
             text-shadow: 2px 2px 15px rgba(0,0,0,1);
@@ -105,6 +104,29 @@
         .video-info h3 { margin: 0 0 10px 0; color: var(--accent-color); font-size: 1.2rem; }
         .video-info p { margin: 0; font-size: 0.95rem; color: var(--text-gray); }
 
+        /* Контакты */
+        .contacts {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: #080808;
+            border-radius: 20px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .contact-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+
         footer { 
             text-align: center; 
             padding: 60px; 
@@ -120,26 +142,26 @@
 
     <header>
         <h1>Айтбеков Актан</h1>
-        <p>AI Developer | Student of School 26</p>
+        <p>AI Developer | Computer Vision Specialist</p>
     </header>
 
     <div class="container">
         
         <section>
-            <h2>🏆 Итоговый проект: AI Coach</h2>
+            <h2>🏆 Итоговый проект: AI COACH PRO</h2>
             <div class="ai-container">
                 <gradio-app src="https://aktan27-ai-portfolio.hf.space"></gradio-app>
             </div>
         </section>
 
         <section>
-            <h2>📺 Мои проекты CV</h2>
+            <h2>📺 Видео-портфолио (CV)</h2>
             <div class="video-grid">
                 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1CVFWRGLo52l8T8-2fY57fDOxOPrn_5io/preview"></iframe>
                     <div class="video-info">
-                        <h3>🔍 Детекция градиентов</h3>
+                        <h3>Проект 1: Детекция градиентов</h3>
                         <p>Выделение границ объектов через анализ резких изменений яркости.</p>
                     </div>
                 </div>
@@ -147,7 +169,7 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1J0UQ2vASsYeCMPloioML1WCyHuhV1h9c/preview"></iframe>
                     <div class="video-info">
-                        <h3>🎭 Алгоритм Кэнни</h3>
+                        <h3>Проект 2: Алгоритм Кэнни</h3>
                         <p>Поиск четких контуров предметов с фильтрацией лишних шумов.</p>
                     </div>
                 </div>
@@ -155,7 +177,7 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1HUVn6kyKUcYum6d1e9vAzlSEchWLnzOs/preview"></iframe>
                     <div class="video-info">
-                        <h3>🌗 Бинаризация</h3>
+                        <h3>Проект 3: Бинаризация</h3>
                         <p>Превращение кадра в ч/б для точного отделения объектов от фона.</p>
                     </div>
                 </div>
@@ -163,7 +185,7 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/199rN3ThoyRg5P73cS_qHMeGBR62SdtET/preview"></iframe>
                     <div class="video-info">
-                        <h3>✨ Морфологическая очистка</h3>
+                        <h3>Проект 4: Морфологическая очистка</h3>
                         <p>Удаление цифрового «мусора» для повышения точности работы ИИ.</p>
                     </div>
                 </div>
@@ -171,7 +193,7 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1OnchIQJZwMrVj8KfzMSS4KbpKV2WRsDf/preview"></iframe>
                     <div class="video-info">
-                        <h3>🕳 Заполнение пустот</h3>
+                        <h3>Проект 5: Заполнение пустот</h3>
                         <p>Интеллектуальное восстановление целостности объектов на видео.</p>
                     </div>
                 </div>
@@ -179,13 +201,22 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1Cgq1RCr72zFmyK4lexCvjO9cDncIho1c/preview"></iframe>
                     <div class="video-info">
-                        <h3>🔢 Подсчет объектов</h3>
+                        <h3>Проект 6: Подсчет объектов</h3>
                         <p>Автоматическое обнаружение и нумерация элементов в реальном времени.</p>
                     </div>
                 </div>
 
             </div>
         </section>
+
+        <section class="contacts">
+            <h2>📞 Связаться со мной</h2>
+            <div class="contact-links">
+                <a href="https://wa.me/0 995 001 062" target="_blank">💬 WhatsApp</a>
+                <a href="https://t.me/@aktan2011" target="_blank">✈️ Telegram</a>
+            </div>
+        </section>
+
     </div>
 
     <footer>
