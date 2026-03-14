@@ -4,85 +4,226 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Айтбеков Актан | AI Portfolio</title>
+    
     <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/6.9.0/gradio.js"></script>
+    
     <style>
-        :root { --accent: #008cff; --bg: #000; }
-        body { background: var(--bg); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+        :root {
+            --accent-color: #008cff; /* Глубокий синий */
+            --bg-dark: #000000;
+            --card-bg: #0d0d0d;
+            --text-gray: #aaaaaa;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #ffffff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
         header {
             height: 45vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.9)), 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Настройка фона: очень четкое фото с легким градиентом к тексту */
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), 
                         url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80');
-            background-size: cover; background-position: center;
-            border-bottom: 3px solid var(--accent); text-align: center;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 3px solid var(--accent-color);
+            text-align: center;
         }
-        header h1 { font-size: 3.5rem; text-transform: uppercase; margin: 0; }
-        header p { font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-top: 5px; }
+
+        header h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,1);
+        }
+        
+        header p { 
+            font-size: 1.3rem; 
+            color: var(--accent-color); 
+            font-weight: 900; 
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        h2 { text-align: center; color: var(--accent); text-transform: uppercase; margin-bottom: 40px; }
-        .ai-container { background: #0d0d0d; border-radius: 20px; border: 2px solid var(--accent); margin-bottom: 60px; overflow: hidden; }
-        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
-        .video-card { background: #0d0d0d; border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.4s; }
-        .video-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        iframe { width: 100%; aspect-ratio: 16/9; border: none; }
+
+        h2 { 
+            text-align: center; 
+            font-size: 2.2rem; 
+            margin-bottom: 40px; 
+            color: var(--accent-color); 
+            text-transform: uppercase; 
+        }
+
+        /* Контейнер для ИИ */
+        .ai-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 5px;
+            border: 2px solid var(--accent-color);
+            margin-bottom: 80px;
+            box-shadow: 0 0 30px rgba(0, 140, 255, 0.2);
+        }
+
+        /* Сетка видео */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.4s ease;
+        }
+
+        .video-card:hover { 
+            border-color: var(--accent-color); 
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 140, 255, 0.3);
+        }
+
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            background: #000;
+        }
+
         .video-info { padding: 20px; }
-        .video-info h3 { color: var(--accent); font-size: 1.1rem; margin: 0 0 10px 0; }
-        .video-info p { color: #aaa; font-size: 0.9rem; margin: 0; }
-        .contacts { text-align: center; padding: 40px; background: #080808; border-radius: 20px; border: 1px dashed var(--accent); margin-top: 40px; }
-        .contact-links a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 1.1rem; }
-        .contact-links a:hover { color: var(--accent); }
-        footer { text-align: center; padding: 40px; opacity: 0.5; border-top: 1px solid #222; margin-top: 40px; }
+        .video-info h3 { margin: 0 0 10px 0; color: var(--accent-color); font-size: 1.2rem; }
+        .video-info p { margin: 0; font-size: 0.95rem; color: var(--text-gray); }
+
+        /* Блок контактов */
+        .contacts {
+            text-align: center;
+            margin: 60px 0;
+            padding: 40px;
+            background: #080808;
+            border-radius: 20px;
+            border: 1px dashed var(--accent-color);
+        }
+
+        .contact-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: var(--accent-color);
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 60px; 
+            opacity: 0.6; 
+            font-size: 0.9rem; 
+            border-top: 1px solid #222; 
+            margin-top: 60px;
+            color: var(--accent-color);
+        }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Айтбеков Актан</h1>
         <p>Ученик 26 школы | Ученик AI Academy</p>
     </header>
+
     <div class="container">
+        
         <section>
             <h2>🏆 Итоговый проект: AI COACH PRO</h2>
             <div class="ai-container">
                 <gradio-app src="https://aktan27-ai-portfolio.hf.space"></gradio-app>
             </div>
         </section>
+
         <section>
             <h2>📺 Видео-портфолио (CV)</h2>
             <div class="video-grid">
+                
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1CVFWRGLo52l8T8-2fY57fDOxOPrn_5io/preview"></iframe>
-                    <div class="video-info"><h3>Проект 1: Детекция градиентов</h3><p>Анализ яркости для поиска границ объектов.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 1: Детекция градиентов</h3>
+                        <p>Выделение границ объектов через анализ резких изменений яркости.</p>
+                    </div>
                 </div>
+
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1J0UQ2vASsYeCMPloioML1WCyHuhV1h9c/preview"></iframe>
-                    <div class="video-info"><h3>Проект 2: Алгоритм Кэнни</h3><p>Поиск четких контуров предметов.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 2: Алгоритм Кэнни</h3>
+                        <p>Поиск четких контуров предметов с фильтрацией лишних шумов.</p>
+                    </div>
                 </div>
+
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1HUVn6kyKUcYum6d1e9vAzlSEchWLnzOs/preview"></iframe>
-                    <div class="video-info"><h3>Проект 3: Методы бинаризации</h3><p>Сегментация объектов от фона.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 3: Бинаризация</h3>
+                        <p>Превращение кадра в ч/б для точного отделения объектов от фона.</p>
+                    </div>
                 </div>
+
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/199rN3ThoyRg5P73cS_qHMeGBR62SdtET/preview"></iframe>
-                    <div class="video-info"><h3>Проект 4: Морфологическая очистка</h3><p>Удаление лишнего шума с кадра.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 4: Морфологическая очистка</h3>
+                        <p>Удаление цифрового «мусора» для повышения точности работы ИИ.</p>
+                    </div>
                 </div>
+
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1OnchIQJZwMrVj8KfzMSS4KbpKV2WRsDf/preview"></iframe>
-                    <div class="video-info"><h3>Проект 5: Заполнение пустот</h3><p>Восстановление целостности объектов.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 5: Заполнение пустот</h3>
+                        <p>Интеллектуальное восстановление целостности объектов на видео.</p>
+                    </div>
                 </div>
+
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1Cgq1RCr72zFmyK4lexCvjO9cDncIho1c/preview"></iframe>
-                    <div class="video-info"><h3>Проект 6: Подсчет объектов</h3><p>Автоматическая нумерация элементов.</p></div>
+                    <div class="video-info">
+                        <h3>Проект 6: Подсчет объектов</h3>
+                        <p>Автоматическое обнаружение и нумерация элементов в реальном времени.</p>
+                    </div>
                 </div>
+
             </div>
         </section>
+
         <section class="contacts">
             <h2>📞 Связаться со мной</h2>
             <div class="contact-links">
-                <a href="https://wa.me/996" target="_blank">WhatsApp</a>
-                <a href="https://t.me/" target="_blank">Telegram</a>
+                <a href="https://wa.me/996700000000" target="_blank">💬 WhatsApp</a>
+                <a href="https://t.me/твой_ник" target="_blank">✈️ Telegram</a>
             </div>
         </section>
+
     </div>
-    <footer>&copy; 2026 Айтбеков Актан. Школа №26.</footer>
+
+    <footer>
+        &copy; 2026 Айтбеков Актан. Школа №26. Все права защищены 🦾
+    </footer>
+
 </body>
 </html>
