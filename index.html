@@ -3,60 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Айтбеков Актан | Fitness AI Portfolio</title>
+    <title>Айтбеков Актан | AI Portfolio</title>
     
     <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/6.9.0/gradio.js"></script>
     
     <style>
         :root {
-            --accent-color: #ccff00; /* Неоновый лайм */
-            --bg-dark: #0a0a0a;
-            --card-bg: #161616;
-            --text-gray: #aaaaaa;
+            --accent-color: #00d2ff; /* Электрический синий */
+            --bg-dark: #050505;
+            --card-bg: #111111;
+            --text-gray: #bbbbbb;
         }
 
         body {
             background-color: var(--bg-dark);
             color: #ffffff;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
             line-height: 1.6;
         }
 
         header {
-            height: 40vh;
+            height: 45vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
+            /* Сделали наложение темного цвета слабее (0.5 вместо 0.8), чтобы фото было четче */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(5,5,5,1)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80');
             background-size: cover;
             background-position: center;
-            border-bottom: 3px solid var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
             text-align: center;
         }
 
-        header h1 { font-size: 3rem; margin: 0; color: var(--accent-color); text-transform: uppercase; }
-        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
+        header h1 { 
+            font-size: 3.5rem; 
+            margin: 0; 
+            color: #ffffff; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+        }
+        
+        header p { font-size: 1.3rem; color: var(--accent-color); font-weight: 500; margin-top: 10px; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
-        h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; color: var(--accent-color); text-transform: uppercase; }
+        h2 { text-align: center; font-size: 2rem; margin-bottom: 40px; color: var(--accent-color); text-transform: uppercase; }
 
         .ai-container {
             background: var(--card-bg);
-            border-radius: 25px;
-            padding: 10px;
-            border: 1px solid #333;
-            margin-bottom: 70px;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.1);
+            border-radius: 20px;
+            padding: 5px;
+            border: 1px solid #222;
+            margin-bottom: 80px;
+            box-shadow: 0 10px 40px rgba(0, 210, 255, 0.1);
         }
 
         .video-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
         }
 
         .video-card {
@@ -64,10 +73,14 @@
             border-radius: 15px;
             overflow: hidden;
             border: 1px solid #222;
-            transition: 0.3s ease;
+            transition: 0.4s ease;
         }
 
-        .video-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+        .video-card:hover { 
+            border-color: var(--accent-color); 
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+        }
 
         iframe {
             width: 100%;
@@ -76,78 +89,78 @@
             background: #000;
         }
 
-        .video-info { padding: 15px; }
-        .video-info h3 { margin: 0 0 8px 0; color: var(--accent-color); font-size: 1.1rem; }
-        .video-info p { margin: 0; font-size: 0.9rem; color: var(--text-gray); }
+        .video-info { padding: 20px; }
+        .video-info h3 { margin: 0 0 10px 0; color: var(--accent-color); font-size: 1.2rem; }
+        .video-info p { margin: 0; font-size: 0.95rem; color: var(--text-gray); }
 
-        footer { text-align: center; padding: 50px; opacity: 0.4; font-size: 0.8rem; border-top: 1px solid #222; margin-top: 50px; }
+        footer { text-align: center; padding: 60px; opacity: 0.5; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 60px; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Айтбеков Актан</h1>
-        <p>Ученик 26 школы | Ученик AI Academy</p>
+        <p>AI Developer | Student of School 26</p>
     </header>
 
     <div class="container">
         
         <section>
-            <h2>🏆 Итоговый проект AI-trainer - ИИ-тренер</h2>
+            <h2>🏆 Интерактивный AI Coach</h2>
             <div class="ai-container">
                 <gradio-app src="https://aktan27-ai-portfolio.hf.space"></gradio-app>
             </div>
         </section>
 
         <section>
-            <h2>📺 Мои видео-проекты по Computer Vision</h2>
+            <h2>📺 Проекты Computer Vision</h2>
             <div class="video-grid">
                 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1CVFWRGLo52l8T8-2fY57fDOxOPrn_5io/preview"></iframe>
                     <div class="video-info">
-                        <h3>🔍 Проект 1: Детекция градиентов</h3>
-                        <p>Программа выделяет вертикальные и горизонтальные границы объектов, анализируя изменения яркости.</p>
+                        <h3>🔍 Детекция градиентов</h3>
+                        <p>Анализ резких изменений яркости для выделения границ объектов на видео.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1J0UQ2vASsYeCMPloioML1WCyHuhV1h9c/preview"></iframe>
                     <div class="video-info">
-                        <h3>🎭 Проект 2: Алгоритм Кэнни</h3>
-                        <p>Находит четкие контуры предметов, эффективно удаляя лишний фоновый шум.</p>
+                        <h3>🎭 Алгоритм Кэнни</h3>
+                        <p>Выделение четких контуров с подавлением шумов для задач компьютерного зрения.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1HUVn6kyKUcYum6d1e9vAzlSEchWLnzOs/preview"></iframe>
                     <div class="video-info">
-                        <h3>🌗 Проект 3: Методы бинаризации</h3>
-                        <p>Превращает цветные фото в черно-белые для точной сегментации объектов.</p>
+                        <h3>🌗 Бинаризация изображения</h3>
+                        <p>Сегментация объектов путем преобразования кадра в черно-белый формат.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/199rN3ThoyRg5P73cS_qHMeGBR62SdtET/preview"></iframe>
                     <div class="video-info">
-                        <h3>✨ Проект 4: Морфологическая очистка</h3>
-                        <p>Удаляет мелкие цифровые помехи и делает контуры объектов более чистыми.</p>
+                        <h3>✨ Морфологические фильтры</h3>
+                        <p>Очистка изображения от помех (Erosion/Dilation) для повышения точности ИИ.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1OnchIQJZwMrVj8KfzMSS4KbpKV2WRsDf/preview"></iframe>
                     <div class="video-info">
-                        <h3>🕳 Проект 5: Заполнение пустот</h3>
-                        <p>Устраняет разрывы в контурах и закрывает мелкие дыры внутри объектов.</p>
+                        <h3>🕳 Заполнение пустот</h3>
+                        <p>Восстановление целостности объектов после их сегментации на кадре.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1Cgq1RCr72zFmyK4lexCvjO9cDncIho1c/preview"></iframe>
                     <div class="video-info">
-                        <h3>🔢 Проект 6: Подсчет объектов</h3>
-                        <p>Алгоритм находит контуры фигур, выделяет их и автоматически считает количество.</p>
+                        <h3>🔢 Подсчет объектов</h3>
+                        <p>Автоматическое обнаружение и нумерация элементов в реальном времени.</p>
                     </div>
                 </div>
 
@@ -156,7 +169,7 @@
     </div>
 
     <footer>
-        &copy; 2026 Айтбеков Актан. Школа №26. Проект выполнен в рамках изучения технологий ИИ.
+        &copy; 2026 Айтбеков Актан. Школа №26. Сделано с помощью искусственного интеллекта.
     </footer>
 
 </body>
