@@ -9,13 +9,11 @@
     
     <style>
         :root {
-            --accent-color: #00d2ff; /* Яркий неон */
+            --accent-color: #00d2ff;
             --bg-dark: #02050a;
-            --card-bg: rgba(13, 13, 13, 0.7);
-            --text-gray: #cccccc;
+            --card-bg: rgba(13, 13, 13, 0.8);
         }
 
-        /* 1. ЖИВОЙ ФОН ВСЕГО САЙТА */
         body {
             background-color: var(--bg-dark);
             background-image: 
@@ -26,10 +24,9 @@
             color: #ffffff;
             font-family: 'Inter', 'Segoe UI', sans-serif;
             margin: 0;
-            line-height: 1.6;
         }
 
-        /* Эффект сетки на фоне */
+        /* Сетка на фоне */
         body::before {
             content: "";
             position: fixed;
@@ -46,133 +43,106 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(2, 5, 10, 1)), 
-                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80'); /* Более космическое фото */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(2, 5, 10, 1)), 
+                        url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80');
             background-size: cover;
             background-position: center;
             border-bottom: 2px solid var(--accent-color);
             text-align: center;
+            padding: 0 20px;
         }
 
         header h1 { 
-            font-size: 4rem; 
+            font-size: clamp(2rem, 8vw, 3.5rem); 
             margin: 0; 
             background: linear-gradient(to right, #00d2ff, #fff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase; 
             letter-spacing: 5px;
-            filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.5));
         }
         
         header p { 
-            font-size: 1.4rem; 
-            color: #ffffff; 
-            font-weight: 300; 
+            font-size: clamp(1rem, 4vw, 1.3rem); 
+            color: var(--accent-color); 
+            font-weight: 900; 
             margin-top: 15px;
+            text-transform: uppercase;
             letter-spacing: 2px;
-            background: rgba(0, 140, 255, 0.2);
-            padding: 5px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
 
-        h2 { 
-            text-align: center; 
-            font-size: 2.5rem; 
-            margin-bottom: 50px; 
-            color: #fff;
-            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
-        }
+        h2 { text-align: center; color: var(--accent-color); text-transform: uppercase; margin-bottom: 40px; font-size: 1.8rem; }
 
-        /* 2. ЭФФЕКТ СТЕКЛА ДЛЯ КОНТЕЙНЕРОВ */
         .ai-container {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border-radius: 30px;
-            padding: 15px;
-            border: 1px solid rgba(0, 210, 255, 0.3);
-            margin-bottom: 100px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border: 2px solid var(--accent-color);
+            margin-bottom: 80px;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.2);
         }
 
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
         .video-card {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(5px);
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s ease;
         }
 
         .video-card:hover { 
             border-color: var(--accent-color); 
-            transform: scale(1.03);
-            box-shadow: 0 15px 40px rgba(0, 210, 255, 0.2);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
         }
 
-        iframe {
-            width: 100%;
-            aspect-ratio: 16/9;
-            border: none;
-            filter: grayscale(0.3);
-            transition: 0.5s;
-        }
-        .video-card:hover iframe { filter: grayscale(0); }
+        iframe { width: 100%; aspect-ratio: 16/9; border: none; }
 
-        .video-info { padding: 25px; background: rgba(0,0,0,0.4); }
-        .video-info h3 { margin: 0 0 10px 0; color: var(--accent-color); }
+        .video-info { padding: 20px; }
+        .video-info h3 { color: var(--accent-color); margin: 0 0 10px 0; font-size: 1.2rem; }
+        .video-info p { color: #ccc; font-size: 0.95rem; margin: 0; }
 
-        /* 3. КОНТАКТЫ КАК НЕОНОВЫЕ ПАНЕЛИ */
         .contacts {
             text-align: center;
-            margin: 80px 0;
-            padding: 60px;
-            background: linear-gradient(135deg, rgba(0, 140, 255, 0.1), rgba(0,0,0,0.5));
-            border-radius: 40px;
-            border: 1px solid rgba(0, 210, 255, 0.2);
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 30px;
+            border: 1px dashed var(--accent-color);
         }
 
         .contact-links a {
             display: inline-block;
             color: #fff;
             text-decoration: none;
-            margin: 15px 25px;
-            padding: 12px 30px;
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            padding: 10px 25px;
             border: 1px solid rgba(0, 210, 255, 0.3);
+            border-radius: 50px;
             transition: 0.3s;
         }
 
-        .contact-links a:hover {
-            background: var(--accent-color);
-            color: #000;
-            box-shadow: 0 0 25px var(--accent-color);
-        }
+        .contact-links a:hover { background: var(--accent-color); color: #000; }
 
-        footer { 
-            text-align: center; 
-            padding: 80px; 
-            letter-spacing: 2px;
-            color: var(--accent-color);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
+        footer { text-align: center; padding: 60px; color: var(--accent-color); opacity: 0.7; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
     <header>
         <h1>Айтбеков Актан</h1>
-        <p>Future AI Engineer | Portfolio</p>
+        <p>Ученик 26 школы | Ученик AI Academy</p>
     </header>
 
     <div class="container">
@@ -180,7 +150,7 @@
         <section>
             <h2>🏆 Итоговый проект: AI COACH PRO</h2>
             <div class="ai-container">
-                <gradio-app src="https://aktan27-ai-portfolio.hf.space"></gradio-app>
+                <gradio-app src="https://aktan27-ai-portfolio.hf.space" theme_mode="dark"></gradio-app>
             </div>
         </section>
 
@@ -191,48 +161,48 @@
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1CVFWRGLo52l8T8-2fY57fDOxOPrn_5io/preview"></iframe>
                     <div class="video-info">
-                        <h3>Детекция градиентов</h3>
-                        <p>Анализ границ объектов через изменения яркости.</p>
+                        <h3>Проект 1: Детекция градиентов</h3>
+                        <p>Выделение границ объектов через анализ резких изменений яркости.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1J0UQ2vASsYeCMPloioML1WCyHuhV1h9c/preview"></iframe>
                     <div class="video-info">
-                        <h3>Алгоритм Кэнни</h3>
-                        <p>Фильтрация шумов и поиск четких контуров.</p>
+                        <h3>Проект 2: Алгоритм Кэнни</h3>
+                        <p>Поиск четких контуров предметов с фильтрацией лишних шумов.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1HUVn6kyKUcYum6d1e9vAzlSEchWLnzOs/preview"></iframe>
                     <div class="video-info">
-                        <h3>Бинаризация</h3>
-                        <p>Отделение объектов от фона в ч/б режиме.</p>
+                        <h3>Проект 3: Бинаризация</h3>
+                        <p>Превращение кадра в ч/б для точного отделения объектов от фона.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/199rN3ThoyRg5P73cS_qHMeGBR62SdtET/preview"></iframe>
                     <div class="video-info">
-                        <h3>Морфологическая очистка</h3>
-                        <p>Устранение цифровых помех для точности ИИ.</p>
+                        <h3>Проект 4: Морфологическая очистка</h3>
+                        <p>Удаление цифрового «мусора» для повышения точности работы ИИ.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1OnchIQJZwMrVj8KfzMSS4KbpKV2WRsDf/preview"></iframe>
                     <div class="video-info">
-                        <h3>Заполнение пустот</h3>
-                        <p>Восстановление целостности объектов на видео.</p>
+                        <h3>Проект 5: Заполнение пустот</h3>
+                        <p>Интеллектуальное восстановление целостности объектов на видео.</p>
                     </div>
                 </div>
 
                 <div class="video-card">
                     <iframe src="https://drive.google.com/file/d/1Cgq1RCr72zFmyK4lexCvjO9cDncIho1c/preview"></iframe>
                     <div class="video-info">
-                        <h3>Подсчет объектов</h3>
-                        <p>Нумерация элементов в реальном времени.</p>
+                        <h3>Проект 6: Подсчет объектов</h3>
+                        <p>Автоматическое обнаружение и нумерация элементов в реальном времени.</p>
                     </div>
                 </div>
 
